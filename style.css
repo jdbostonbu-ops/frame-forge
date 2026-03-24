@@ -869,6 +869,11 @@ canvas {
    
 }
 
+@media (max-width: 768px) {
+    #work, .about-section, .services-section {
+        padding: 0 5%; /* Drops from 20% to 5% so the videos stay BIG */
+    }
+}
 
 
 
