@@ -1,0 +1,882 @@
+/* The Container */
+.portfolio-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    
+    z-index: 1;
+    
+}
+
+main, .wrapper, #content-area { 
+    position: relative;
+    z-index: 10; 
+}
+
+body {
+    margin: 0;
+    background-color: #000;
+   
+    height: 100vh;
+    width: 100dvw;
+   
+}
+
+html {
+    scroll-behavior: smooth;
+
+    /* Adjust '100px' to match the height of the Nav bar */
+    scroll-padding-top: 100px; 
+}
+
+
+/* THE CINEMATIC GRAIN */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* A subtle noise texture */
+    background-image: url('https://upload.wikimedia.org');
+    opacity: 0.03; /* Keep it VERY faint (3%) */
+    pointer-events: none; /* Let clicks pass through to the particles */
+    z-index: 5; /* Sits behind your text but over the black floor */
+}
+
+
+:root {
+  /* Increase these numbers until it feels "Huge" */
+  --forge-font-size: 180px; 
+}
+
+/*  The Video (The "Reveal" Layer) Reveal Video Background */
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+   
+    
+    
+    filter: grayscale(100%) brightness(0.4);
+    /* ... your existing styles ... */
+    filter: brightness(0.4) grayscale(100%) contrast(1.2); 
+    /* This makes the white stripes pop and the black stripes deep */
+}
+
+/* The Canvas (The "Interaction" Layer) */
+#scatterCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /*prevents glitchy on mobile when resizing */
+  height: 100%; /*prevents glitchy on mobile when resizing */
+  z-index: 10; /* Sits on top of the video */
+  visibility: hidden; /* Hidden until the video is ready to avoid weird flashes on load */
+  background: transparent !important;
+
+  /* The Experience-Triple Threat */
+  cursor: crosshair; /* Cool "Studio" look on Laptop; cursor vibe (The Look)*/
+  pointer-events: auto; /* Ensures it catches your touch/mouse (The Permission) */
+  touch-action: none; /* CRITICAL: Prevents iPad from trying to scroll while you scatter particles (The Control) */
+}
+
+@font-face {
+    font-family: "RobotoBold";
+    src: url("./Roboto-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+
+@media (max-width: 1024px) {
+  /* Mobile Adjustments */
+  #scatterCanvas {
+    cursor: default; /* Default cursor on mobile for better UX */
+     :root {
+    --forge-font-size: 100px; /* Larger for iPad */
+  }
+
+}
+}
+
+@media (max-width: 768px) {
+  :root {
+    --forge-font-size: 70px;
+  }
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(10, 10, 10, 0.98);
+    z-index: 150; /* Must be higher than the Nav Bar */
+    
+    /* Ensure links inside are visible */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transform: translateZ(150px);
+    -webkit-transform: translateZ(150px);
+
+    flex-direction: column;
+    justify-content: center;
+    transform: translateZ(1px);
+}
+
+   
+
+.studio-nav, #scatterCanvas, .menu-overlay {
+    transform: translateZ(10px); /* Forces it to the foreground */
+    -webkit-transform: translateZ(10px);
+}
+
+
+
+.studio-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* 40px from top, 60px from the sides (The Cushion) */
+    padding: 40px 60px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2000;
+    pointer-events: auto;
+    box-sizing: border-box; /* Ensures padding doesn't break the width */
+    transform: translateZ(1000px);
+    -webkit-transform: translateZ(1000px);
+}
+
+.studio-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toggle-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+/* A single minimalist line instead of hamburger bars */
+.toggle-line {
+    width: 40px;
+    height: 1px;
+    background: #FF4D00; /* Forge Orange */
+    transition: width 0.3s;
+}
+
+.studio-toggle:hover .toggle-text { color: #FF4D00; }
+.studio-toggle:hover .toggle-line { width: 50px; }
+
+
+/* THE CLICKABLE BUTTONS */
+.submit-btn {
+    cursor: pointer;
+    pointer-events: auto !important;
+}
+
+
+/* When the menu is active */
+.menu-overlay.active {
+    right: 0;
+}
+
+.menu-overlay{
+    transform: translateZ(1px); /* Ensures it stays above the canvas and video */
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between links */
+    position: relative; /* Gives the links a "base" */
+    z-index: 160;       /* Sits inside the overlay, on top */
+}
+
+.menu-content a {
+    /* --- The Look --- */
+    font-family: 'RobotoBold', sans-serif;
+    font-weight: 900;                /* Heavy "Studio" weight */
+    font-size: clamp(32px, 8vw, 80px);/* Resizes for iPad vs Laptop */
+    color: #fff;
+    text-decoration: none;           /* Removes the blue underline */
+    text-transform: uppercase;       /* Makes it look like a film title */
+    letter-spacing: 4px;             /* Clean, spaced-out professional look */
+
+    /* --- The Layout --- */
+    display: block;                  /* Stacks links on top of each other */
+    margin: 25px 0;                 /* Vertical breathing room */
+    opacity: 1 !important;              /* Ensures they are fully visible when the menu opens */
+
+    /* --- The Interaction --- */
+    transition: color 0.3s ease;     /* Smoothly fades to orange on hover */
+    position: relative; /* <--- CRITICAL: z-index won't work without this */
+    z-index: 10;        /* <--- Pulls it above the menu background */
+
+    display: block;
+    visibility: visible !important;
+}
+
+.menu-content a:hover {
+    color: #FF4D00 !important; 
+}
+
+
+.menu-footer {
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+/* Menu Toggle Button */
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden off-screen to the right */
+    width: 100%;  
+    max-width: 450px; /* Slimmer on Laptop, full width on iPad */
+    height: 100dvh;
+    background: #111; /* Darker than the menu for contrast */
+    z-index: 5000; /* Stays above the menu and canvas */
+    padding: 80px 80px;
+    box-shadow: -15px 0 50px rgba(0,0,0,0.8); /* Depth shadow */
+    transition: right 0.7s cubic-bezier(0.19, 1, 0.22, 1); /* "Expo" feel */
+    overflow-y: auto; /* Scrollable if the form is long */
+
+    transform: translateZ(1100px);
+    -webkit-transform: translateZ(1100px);
+    pointer-events: auto;
+}
+
+
+.side-panel.open {
+    right: 0; /* Slides into view */
+}
+
+/* 3. The Contact Panel "Black Text" Fix */
+.side-panel h2, 
+.side-panel label, 
+.side-panel p,
+.side-panel .back-btn {
+    color: #FF4D00 !important; /* Force all text to White */
+}
+
+
+.input-group { margin-bottom: 30px; }
+
+.input-group label {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #FF4D00; /* Forge Orange Labels */
+    margin-bottom: 10px;
+}
+
+#forge-form select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #444;
+    color: #fff;
+    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Ensure the labels are ORANGE and the input text is WHITE */
+#forge-form label { color: #FF4D00 !important; font-weight: 900; font-size: 12px; }
+#forge-form input, #forge-form textarea { 
+    background: transparent; 
+    border: none; 
+    border-bottom: 1px solid #333; 
+    color: #fff !important; 
+    padding: 10px 0;
+}
+
+
+.submit-btn {
+    background: #FF4D00; /* Forge Orange */
+    color: #fff;
+    border: none;
+    padding: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+
+    letter-spacing: 3px; /* Cinematic spacing */
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+
+    position: relative;
+    z-index: 5001; /* Pulls the button even further forward */
+   
+    pointer-events: auto !important;
+}
+
+
+
+.submit-btn:hover {
+    background: #FF4D00; /* Slightly darker orange */
+    letter-spacing: 5px; /* Subtle "expansion" effect on hover */
+    box-shadow: 0 0 20px rgba(255, 77, 0, 0.4); /* Subtle heat glow */
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    color: #666; /* Dim gray so it doesn't distract from the header */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    margin-bottom: 20px; /* Space it above the "START A PROJECT" text */
+}
+
+
+.back-btn:hover {
+    color: #FF4D00; /* Forge Orange on hover */
+}
+
+
+.back-btn {
+    position: relative; 
+    z-index: 9999 !important; /* Forces it to the very front */
+    cursor: pointer !important; /* If the cursor doesn't turn into a hand, it's being blocked */
+    pointer-events: auto !important;
+}
+
+.panel-header {
+    position: relative;
+    z-index: 1001; /* Ensure the header itself isn't buried */
+}
+
+
+
+.side-panel .back-btn:hover {
+    color: #FF4D00 !important; /* Back button turns Orange on hover */
+}
+
+.hidden-success {
+    display: none; /* Only shows after the "Develop Project" button is clicked */
+}
+
+/* THE FORM (Make sure it starts VISIBLE) */
+#forge-form {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px; 
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* THE WHITE TEXT FIX (Ensure these are white for readability) */
+#success-message h3, 
+#success-message p,
+#contact-panel h2 {
+    color: #ffffff !important;
+}
+
+
+.footer-left a, .footer-right span {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.4); /* Dimmed so they don't distract */
+    text-decoration: none;
+    transition: color 0.3s, letter-spacing 0.3s;
+    pointer-events: auto; 
+}
+
+/* Hover Effect */
+.footer-left a:hover {
+    color: #FF4D00;
+    letter-spacing: 5px;
+}
+
+.footer-left a {
+    margin-right: 25px;
+}
+
+/* On Mobile/iPad */
+@media (max-width: 768px) {
+    .studio-footer {
+        padding: 20px 30px;
+    }
+    .footer-right { display: none; } /* Hide location on small screens */
+
+    .work-grid {
+        grid-template-columns: 1fr; /* Stacks them in 1 column */
+    }
+}
+
+.menu-footer p{
+    font-size: 15px;
+    margin-top: 0;
+    padding:0;
+    line-height: 1;
+}
+
+.studio-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    /* Matches your top Nav */
+    padding: 40px 60px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+    pointer-events: none; /* Let clicks pass to the canvas unless on a link */
+    box-sizing: border-box;
+
+    z-index: 9999; /* Higher than the canvas */
+    transform: translateZ(100px); /* Forces Safari to prioritize it */
+    -webkit-transform: translateZ(100px);
+}
+
+.social-link {
+    pointer-events: auto; /* Makes JUST the links clickable */
+}
+
+.social-icon {
+    width: 24px !important;
+    height: 24px !important;
+   
+    opacity: 1 !important;
+}
+
+
+
+#x-icon {
+    width: 24px !important;
+    height: 24px !important;
+    filter: brightness(0) invert(1) !important; /* Forces ONLY X to be white */
+    opacity: 1 !important;
+    
+}
+
+/* 2. THE FIX: The Hover State for X (Turns Orange) */
+.social-link:hover #x-icon {
+    /* This specific filter creates that perfect Forge Orange (#FF4D00) */
+    filter: invert(35%) sepia(90%) saturate(5000%) hue-rotate(10deg) !important;
+    opacity: 1 !important;
+}
+
+
+/* HOVER: Turn them Forge Orange and lift them up */
+.social-link:hover .social-icon {
+    opacity: 1;
+    /* This specific filter creates Forge Orange (#FF4D00) */
+    filter: invert(35%) sepia(90%) saturate(5000%) hue-rotate(10deg) !important;
+    transform: translateY(-3px);
+    object-fit: contain;
+    transition: all 0.3s ease;
+    
+}
+
+html, body {
+  
+    overflow-x: hidden;
+    
+    
+    margin: 0;
+
+    padding: 0;
+    background: #000;
+
+    overflow-y: visible !important; /* Forces Chrome to see the scrollbar */  
+}
+
+/* Ensure the body is long enough to hold all these 'pages' */
+body {
+    height: auto !important;
+    min-height: 100%; /* Adjust this to fit Forge + 4 Videos + Services */
+}
+
+
+/* The Video Wrapper */
+.work-img-wrapper {
+    width: 100% !important; 
+    height: 100% !important;
+    
+    border-radius: 4px; /* Optional: adds a subtle "pro" look */
+}
+
+/* The Grid Layout */
+.work-grid {
+    display: flex;
+    flex-direction: column;
+    
+    /* PULL IN FROM TOP/BOTTOM: Increased gap creates vertical "breathing room" */
+    gap: 120px; 
+    
+    max-width: 1000px; /* Constrains them from getting too wide on big screens */
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* The Container for each Project */
+.work-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Keeps that movie-theater shape */
+    overflow: hidden;
+    background: #111;
+    
+    /* Adds a high-end studio border */
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Adds depth over the particles */
+}
+
+
+/* The Video (The Content) */
+.work-video {
+    /* Force it to fill the 100vh box no matter what */
+    width: 100% !important;
+    height: 100% !important;
+  
+    /* This replaces aspect-ratio. It crops the video 
+       to fill the screen without stretching the people inside. */
+    object-fit: cover !important; 
+    
+    /* Positioning & Display */
+    display: block;      
+    object-position: center; 
+    
+    /* Cinematic Styling */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+    background: #000;
+    transform: scale(1.01); /* Prevents tiny white edges */
+    filter: contrast(1.1) brightness(0.9);
+}
+
+
+
+/* The "Overlay" (Text and Dark Gradient) */
+.work-overlay {
+    position: absolute;
+    inset: 0; /* Shortcut for top/bottom/left/right: 0 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Puts text at the bottom */
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); /* Makes text readable */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+    bottom: 5%;
+}
+
+/* HOVER EFFECTS */
+.work-item:hover .work-overlay {
+    opacity: 1; /* Show text on hover */
+}
+
+.work-item:hover .work-video {
+    transform: scale(1.05); /* Subtle zoom in effect */
+}
+
+/* Text Styling */
+.work-category {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #aaa;
+}
+
+.work-title {
+    font-size: 1.5rem;
+    margin: 5px 0 0;
+    color: #fff;
+    
+}
+
+
+canvas {
+    position: fixed !important; /* Keeps it from moving when you scroll */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Sits behind the work grid */
+    pointer-events: none; /* Allows clicks to pass through to the grid */
+}
+
+.work-video, video {
+    /* REMOVE the 1280px fixed sizes! Use 100% instead */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#work {
+    position: relative;
+    z-index: 99;
+    background: #000;
+    width: 100%;
+    margin-top: 100vh;
+    padding: 0 20%; /* Your side margins */
+    
+    /* THE CUSHION: This adds a full screen of black space at the very end */
+    padding-bottom: 50vh; 
+    
+    /* Ensures the scrollbar is long enough to see the cushion */
+    min-height: 450vh; 
+    box-sizing: border-box;
+}
+
+.work-item:last-child {
+    margin-bottom: 100px; /* Extra breathing room just for the last one */
+}
+
+
+/* SERVICES SECTION*/
+.services-section {
+    padding: 150px 10%;
+    background: transparent; /* Let the Forge particles show through */
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+}
+
+.section-label {
+    color: #FF4D00; /* YOUR ORANGE */
+    font-size: 0.9rem;
+    letter-spacing: 6px;
+    margin-bottom: 80px;
+    font-weight: 700;
+    padding-top: 20px;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 50px 0;
+    /* This creates the internal gap so the title and desc don't touch */
+    gap: 50px; 
+}
+
+/* Hover: The row 'activates' with your orange */
+.service-item:hover {
+    border-top-color: #FF4D00; /* Top line turns orange */
+    padding-left: 30px; /* Slight shift to the right */
+}
+
+.service-item:hover .service-name {
+    color: #FF4D00; /* Title turns orange */
+}
+
+.service-num {
+    color: #444; /* Subtle gray until hover */
+    font-size: 0.8rem;
+    margin-right: 25px;
+}
+
+.service-name {
+    font-size: 2.2rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.service-detail {
+    /* Limit the width of the description specifically */
+    max-width: 400px; 
+    text-align: right; /* Aligns with the right edge of your 'frame' */
+    color: #888;
+    line-height: 1.6;
+    /* Prevents the 4K/8K text from staying on one long line */
+    word-break: break-word; 
+}
+
+#services {
+    position: relative;
+    z-index: 100;
+    background: #000;
+    width: 100%;
+    /* This creates the same 'frame' as your videos */
+    padding: 100px 20%; 
+    box-sizing: border-box; 
+    overflow: hidden; /* Prevents anything from 'bleeding' out the side */
+}
+
+.services-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* If the screen is huge, don't let the text drift too far right */
+    max-width: 1000px; 
+    margin: 0 auto;
+}
+
+
+@media (max-width: 768px) {
+    /* For iPad/Mobile: Stack them vertically so nothing disappears */
+    .service-item {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .service-detail {
+        text-align: left;
+        max-width: 100%;
+    }
+}
+
+#about {
+    position: relative;
+    z-index: 100;      /* Above the canvas */
+    background: #000;   /* SOLID BLACK so the canvas doesn't bleed through */
+    
+    width: 100%;
+    min-height: 100vh;  /* Forces it to take at least one full screen */
+    
+    /* THE CUSHION: This adds the extra scrolling room you need */
+    padding-bottom: 50vh; 
+    
+    display: block;
+    box-sizing: border-box;
+}
+
+.about-section {
+    padding: 150px 20%; /* Matches the video and service margins */
+    background: transparent; 
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+}
+
+.about-lead {
+    font-size: clamp(2rem, 4vw, 3.5rem); /* Large, impactful text */
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.highlight {
+    color: #FF4D00; /* YOUR ORANGE */
+}
+
+.about-detail {
+    max-width: 600px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #888;
+    margin-bottom: 60px;
+}
+
+.about-stats {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 40px;
+}
+
+.stat-num {
+    color: #FF4D00;
+    font-weight: 700;
+    display: block;
+    font-size: 1.5rem;
+}
+
+/*CONTACT PAGE*/
+
+#contact.open {
+    box-shadow: -10px 0 50px rgba(255, 77, 0, 0.2); /* Subtle orange glow on the edge */
+    background: #000;
+    min-height: 100%;
+}
+ 
+.project-panel {
+   
+    width: 100%;
+    /* THE FIX: Dynamic height accounts for mobile browser bars */
+    height: 100dvh; 
+    background: #000; /* Solid black to block the canvas */
+    z-index: 2000;
+    
+    /* Forces the panel to allow internal scrolling */
+    overflow-y: auto !important; 
+    display: block;
+}
+
+.panel-content {
+    padding: 80px 10%;
+    /* MASSIVE CUSHION: Pushes the Transmit button way up from the bottom */
+    padding-bottom: 100px !important; 
+    min-height: 100%;
+    box-sizing: border-box;
+    background: #000;
+}
+
+.contact-section {
+    padding: 150px 20%; /* Matches the video and service margins */
+   
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+}
+
+#contact {
+    position: relative;
+    z-index: 100;      /* Above the canvas */
+    background: #000;   /* SOLID BLACK so the canvas doesn't bleed through */
+    
+    width: 100%;
+    
+   
+}
+
+.logo-img {
+        
+    width: 100%;             /* Responsive for mobile */
+    height: auto;           /* Prevents squishing */
+    display:flex;
+    justify-self: center;
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+

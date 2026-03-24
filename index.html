@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <script src="https://cdnjs.cloudflare.com"></script>
+    <script src="https://cdnjs.cloudflare.com"></script>
+    <script src="https://cdnjs.cloudflare.com"></script>
+    <script src="https://cdn.jsdelivr.net"></script>
+    <script src="script.js"></script>
+    <script src="gsap.min.js"></script>  
+
+    <title>Frame Forge | Studio</title>
+</head>
+<body>
+
+<!--  THE TOP BAR (Logo + Hamburger) -->
+<nav class="studio-nav">
+  
+    <div class="nav-controls">
+
+        <!-- The Inquiry Toggle (Your "Cool" Button) -->
+        <div class="inquiry-toggle" onclick="openContact()">INQUIRY</div>
+        
+        <!-- The Toggle-->
+         <div class="studio-toggle" onclick="toggleMenu()">
+        <span class="toggle-text">MENU</span>
+        <div class="toggle-line"></div>
+    </div>
+    </div>
+</nav>
+
+
+<!-- THE BACKGROUND LAYERS -->
+<div class="portfolio-wrapper">
+    <canvas id="scatterCanvas"></canvas>
+    <canvas id="canvas1"></canvas>
+    
+<!-- WORK SECTION: The Cinematic Stack -->
+<section id="work" class="work-section">
+    <div class="work-grid">
+
+        <!-- Project 1: Music Video -->
+        <h1 class="section-label">// WORK/PROJECTS</h1>
+        <div class="work-item" onclick="openProject('project1')">
+            <div class="work-img-wrapper">
+                <video playsinline muted loop class="work-video" 
+                       style="width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute; top: 0; left: 0;">
+                    <source src="https://upload.wikimedia.org/wikipedia/commons/d/dc/SKATERS_-_MISS_TEEN_MASS_-_MUSIC_VIDEO.webm" type="video/mp4">
+                </video>
+                <div class="work-overlay">
+                    <span class="work-category">MUSIC VIDEO</span>
+                    <h3 class="work-title">"SKATERS" MISS TEEN MASS</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2: Short Film -->
+        <div class="work-item" onclick="openProject('project2')">
+            <div class="work-img-wrapper">
+                <video playsinline muted loop class="work-video" 
+                       style="width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute; top: 0; left: 0;">
+                    <source src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Robin_Schulz_-_%22Sugar%22_-_Director%27s_Cut.webm" type="video/mp4">
+                </video>
+                <div class="work-overlay">
+                    <span class="work-category">MUSIC VIDEO</span>
+                    <h3 class="work-title">"SUGAR" ROBIN SCHULZ</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3: Magic -->
+        <div class="work-item" onclick="openProject('project3')">
+            <div class="work-img-wrapper">
+                <video playsinline muted loop class="work-video" 
+                       style="width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute; top: 0; left: 0;">
+                    <source src="https://upload.wikimedia.org/wikipedia/commons/3/33/Rudy_Mancuso_%26_Maia_Mitchell_-_Magic_%28Official_Music_Video%29.webm" type="video/mp4">
+                </video>
+                <div class="work-overlay">
+                    <span class="work-category">MUSIC VIDEO</span>
+                    <h3 class="work-title">"MAGIC" RUDY MANCUSO & MAIA MITCHELL</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4: Behemoth -->
+        <div class="work-item" onclick="openProject('project4')">
+            <div class="work-img-wrapper">
+                <video playsinline muted loop class="work-video" 
+                       style="width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute; top: 0; left: 0;">
+                    <source src="https://upload.wikimedia.org/wikipedia/commons/0/03/MARS_RED_SKY_-_Friendly_Fire_%28Demons_Unleashed%21%29_-_Official_2016_music_video.webm" type="video/mp4">
+                </video>
+                <div class="work-overlay">
+                    <span class="work-category">MUSIC VIDEO</span>
+                    <h3 class="work-title">"MARS RED SKY" FRIENDLY FIRE</h3>
+                </div>
+            </div>
+        </div>
+         <!-- Project 5: Neffex -->
+        <div class="work-item" onclick="openProject('project5')">
+            <div class="work-img-wrapper">
+                <video playsinline muted loop class="work-video" 
+                       style="width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute; top: 0; left: 0;">
+                    <source src="https://upload.wikimedia.org/wikipedia/commons/f/f1/NEFFEX_-_NO_TURNING_BACK_%28Official_Music_Video%29.webm" type="video/mp4">
+                </video>
+                <div class="work-overlay">
+                    <span class="work-category">MUSIC VIDEO</span>
+                    <h3 class="work-title">"NO TURNING BACK" NEFFEX</h3>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- Close work-grid -->
+</section> <!-- Close work-section -->
+
+<!-- SERVICES SECTION -->
+<section id="services" class="services-section">
+    <div class="services-container">
+        <h1 class="section-label">// CAPABILITIES</h1>
+        
+        <div class="service-item">
+            <div class="service-header">
+                <span class="service-num">01</span>
+                <h3 class="service-name">CINEMATOGRAPHY</h3>
+            </div>
+            <p class="service-detail">4K/8K Digital Cinema. Specialist in narrative<br> lighting and high-speed motion capture.</p>
+        </div>
+
+        <div class="service-item">
+            <div class="service-header">
+                <span class="service-num">02</span>
+                <h3 class="service-name">POST-PRODUCTION</h3>
+            </div>
+            <p class="service-detail">Precision editing and sound design.<br>Crafting the rhythm of the story.</p>
+        </div>
+
+        <div class="service-item">
+            <div class="service-header">
+                <span class="service-num">03</span>
+                <h3 class="service-name">COLOR GRADING</h3>
+            </div>
+            <p class="service-detail">DaVinci Resolve workflow. Creating<br>unique cinematic textures and moods.</p>
+        </div>
+    </div>
+</section>
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+    <div class="about-container">
+        <h1 class="section-label">// THE STUDIO</h1>
+        <div class="about-content">
+            <p class="about-lead">
+                WE ARE <span class="highlight">FRAME FORGE</span>. 
+                A CREATIVE COLLECTIVE DEDICATED TO THE ART OF 
+                <span class="highlight">CINEMATIC STORYTELLING</span>.
+            </p>
+            <p class="about-detail">
+                From high-octane music videos to intimate short films, 
+                we specialize in crafting visual textures that resonate. 
+                Our philosophy is simple: Every frame is a canvas, 
+                and every edit is a heartbeat. 
+            </p>
+            <div class="about-stats">
+                <div class="stat-item"><span class="stat-num">10+</span> YEARS</div>
+                <div class="stat-item"><span class="stat-num">50+</span> PROJECTS</div>
+                <div class="stat-item"><span class="stat-num">01</span> VISION</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTACT SECTION -->
+<section id="contact" class="project-panel">
+    <div class="panel-content">
+        <h2 class="section-label">// INITIALIZE PROJECT</h2>
+        
+        <form id="studio-form" class="studio-form">
+            <!-- Your input groups here -->
+            <button type="button" class="submit-btn" onclick="openContact()">TRANSMIT REQUEST</button>
+
+        </form>
+
+        <div class="direct-contact">
+            <p>DIRECT: <span class="highlight">HELLO@FRAMEFORGE.STUDIO</span></p>
+        </div>
+    
+     <img src="Dark Blue Orange Simple Initial F Letter Logo.png" 
+         alt="Frame Forge Logo" 
+         class="logo-img" 
+         style="height: 400px; width: auto;"></img>
+    </div>
+</section>
+  <!-- Centered: The Logo -->
+    
+   
+        
+      
+
+
+<!-- THE OVERLAYS (Hidden by default) -->
+<div id="studio-menu" class="menu-overlay">
+    <div class="menu-content">
+        <a href="#work" onclick="toggleMenu()">WORK/PROJECTS</a>
+        <a href="#services" onclick="toggleMenu()">SERVICES</a>
+        <a href="#about" onclick="toggleMenu()">ABOUT</a>
+        <a href="#" onclick="toggleMenu(); openContact();">CONTACT</a>
+    </div>
+    
+    <div class="menu-footer">
+        <p>RECORDING • MIXING • COLOR GRADING</p>
+        <p>LOS ANGELES / NEW YORK</p>
+    </div>
+</div>
+
+<!-- THE CONTACT PANEL -->
+<div id="contact-panel" class="side-panel">
+    
+    <!-- Header with the "X" or "Back" button -->
+    <div class="panel-header">
+        <h2>START A PROJECT</h2>
+        <button onclick="closeContact()" class="back-btn">← BACK TO MENU</button>
+    </div>
+
+    <!-- The Form -->
+    <form id="forge-form">
+        <div class="input-group">
+            <label>NAME</label>
+            <input type="text" placeholder="YOUR NAME" required>
+        </div>
+        
+        <div class="input-group">
+            <label>EMAIL</label>
+            <input type="email" placeholder="EMAIL@STUDIO.COM" required>
+        </div>
+
+        <div class="input-group">
+            <label>YOUR VISION</label>
+            <textarea rows="4" placeholder="TELL US ABOUT THE PROJECT..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">DEVELOP PROJECT</button>
+    </form>
+
+    <!-- Success Message (Hidden by CSS) -->
+    <div id="success-message" class="hidden-success">
+        <div class="forge-check">✓</div>
+        <h3>SCENE CAPTURED.</h3>
+        <p>We’ve received your vision.</p>
+        <button onclick="resetForm()" class="back-btn">← SEND ANOTHER</button>
+    </div>
+</div>
+
+<div class="studio-footer">
+    <!-- Socials -->
+    <div class="footer-left">
+        <a href="https://instagram.com" target="_blank">INSTAGRAM</a>
+        <a href="https://x.com" target="_blank">X</a>
+        <a href="https://linkedin.com" target="_blank">LINKEDIN</a>
+    </div>
+
+
+<div class="footer-left">
+    <a href="https://instagram.com" target="_blank" class="social-link">
+        <img src="instagram.png" alt="Instagram" class="social-icon">
+    </a>
+    <a href="https://x.com" target="_blank" class="social-link">
+        <img src="twitter.png" alt="X" class="social-icon" id="x-icon">
+    </a>
+     <a href="https://linkedin.com" target="_blank" class="social-link">
+        <img src="linkedin.png" alt="X" class="social-icon">
+    </a> 
+</div> 
+    
+    <!-- Location -->
+    <div class="footer-right">
+        <span>EST. 2024 / NEW YORK CITY</span>
+    </div>
+</div> 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
