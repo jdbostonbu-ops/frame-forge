@@ -2,6 +2,7 @@
 A high-performance, visually-driven portfolio designed for film production and digital cinematography.
 
 ### 🎥 Key Technical Features
+- **Compatibility**: Mobile iOS/Tablet/iPad compatible
 - **Cinematic Video Grid**: A custom-built "stack" of auto-playing 4K/8K video previews with optimized `playsinline` and `muted` attributes for mobile performance.
 - **Advanced Motion Design**: Integration of **GSAP (GreenSock Animation Platform)** for ultra-smooth UI transitions and interactive elements.
 - **Dual Canvas Engine**: Dual-layered `<canvas>` rendering (`scatterCanvas` and `canvas1`) for dynamic, interactive background textures that respond to user movement.
