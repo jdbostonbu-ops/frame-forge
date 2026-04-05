@@ -1,6 +1,6 @@
 ### Frame Forge | Cinematic Studio 🎬
 ``A high-performance, visually-driven portfolio designed for film production and digital cinematography.``
-Live Demo | GitHub Profile
+> [Live Demo](https://jdbostonbu-ops.github.io/frame-forge/) | [GitHub Profile](https://github.com/jdbostonbu-ops)
 
 ## 👤 Author
 **Jacqueline**  
