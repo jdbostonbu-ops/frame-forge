@@ -14,7 +14,7 @@
 - **Context-Aware Navigation**: A custom "Inquiry" and "Studio Toggle" navigation system designed for a minimal, immersive user experience.
 
 ### 🌐 Browser & Device Compatibility
-This project is optimized for high-performance Chromium engines. For the best experience, use Chrome or Edge.
+- This project is optimized for high-performance Chromium engines. For the best experience, use Chrome or Edge.
 
 | Browser / Device | Status | Performance Notes |
 | :--- | :--- | :--- |
@@ -34,10 +34,12 @@ This project is optimized for high-performance Chromium engines. For the best ex
 - **Workflow**: Resolve-based color aesthetic applied to web UI
 
 ### 🎨 Design Philosophy
-Frame Forge is built on the concept of "The Cinematic Canvas." Every transition is timed to mimic a film cut, and the "capabilities" section uses a brutalist, high-contrast aesthetic to mirror professional production call sheets.
+- Frame Forge is built on the concept of "The Cinematic Canvas."
+- Every transition is timed to mimic a film cut, and the "capabilities" section uses a brutalist, high-contrast aesthetic to mirror professional production call sheets.
 
 ### 📈 Activity & Contributions
-I am an active developer with a high-frequency contribution rhythm, focusing on deep development cycles for immersive web experiences.Current Focus: Optimizing WebGL/Canvas performance for mobile devices.Daily Activity: Check out my Contribution Graph for a real-time view of my development streak.
+- I am an active developer with a high-frequency contribution rhythm, focusing on deep development cycles for immersive web experiences.
+- Current Focus: Optimizing WebGL/Canvas performance for mobile devices.Daily Activity: Check out my Contribution Graph for a real-time view of my development streak.
 
 
 
