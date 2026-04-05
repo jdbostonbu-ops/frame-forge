@@ -1,5 +1,5 @@
 ### Frame Forge | Cinematic Studio 🎬
-> A high-performance, visually-driven portfolio designed for film production and digital cinematography.
+> A high-performance, visually-driven portfolio designed for film production and digital cinematography. >
 Live Demo | GitHub Profile
 
 ## 👤 Author
