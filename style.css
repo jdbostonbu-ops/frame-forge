@@ -167,7 +167,7 @@ body::after {
 .toggle-text {
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
-    font-size: 10px;
+    font-size: 14px;
     letter-spacing: 3px;
     color: #fff;
     transition: color 0.3s;
@@ -874,6 +874,14 @@ canvas {
         padding: 0 5%; /* Drops from 20% to 5% so the videos stay BIG */
     }
 }
+
+
+
+
+
+
+
+
 
 
 
