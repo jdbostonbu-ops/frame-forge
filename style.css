@@ -866,7 +866,35 @@ canvas {
     height: auto;           /* Prevents squishing */
     display:flex;
     justify-self: center;
-   
+    pointer-events: none;
+    animation: pulse-logo 3s ease-in-out infinite;
+}
+
+@keyframes pulse-logo {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.23); /* Very slight grow */
+    }
+}
+
+.top-icon {
+    pointer-events: none;
+    animation: pulse-logo 3s ease-in-out infinite;
+}
+
+@keyframes pulse-logo {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.23); /* Very slight grow */
+    }
 }
 
 @media (max-width: 768px) {
