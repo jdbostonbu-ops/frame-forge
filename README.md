@@ -1,6 +1,10 @@
 # Frame Forge | Cinematic Studio 🎬
 A high-performance, visually-driven portfolio designed for film production and digital cinematography.
 
+## 👤 Author
+**Jacqueline**  
+[Check out my GitHub Profile](https://github.com/jdbostonbu-ops)
+
 ### 🎥 Key Technical Features
 - **Compatibility**: Mobile iOS/Tablet/iPad compatible
 - **Cinematic Video Grid**: A custom-built "stack" of auto-playing 4K/8K video previews with optimized `playsinline` and `muted` attributes for mobile performance.
