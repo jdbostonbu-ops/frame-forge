@@ -25,6 +25,8 @@ This project is optimized for high-performance Chromium engines. For the best ex
 
 ``Technical Note: While the interactive canvas has an initial loading delay on iPad/iOS, the scroll behavior is fully optimized to match the desktop Chrome experience.``
 
+``Mobile UI Note: There is a known alignment offset where the footer logo does not center correctly on iPad and iPhone viewports. This is a CSS flex-box refinement currently in progress.``
+
 ### 🛠️ Tech Stack
 - **Animations**: GSAP (GreenSock), HTML5 Canvas API
 - **Frontend**: Vanilla JavaScript (ES6+), Semantic HTML5
