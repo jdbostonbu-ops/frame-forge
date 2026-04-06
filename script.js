@@ -146,29 +146,28 @@ menuTl.to(".toggle-line", { width: 60, backgroundColor: "#fff", duration: 0.3 },
 
 
 // Grab the elements
-// Inside your window.addEventListener('load', () => { ... })
 
 const forgeForm = document.getElementById('forge-form');
 const successMsg = document.getElementById('success-message');
 
 if (forgeForm) {
     forgeForm.addEventListener('submit', function(e) {
-        // 1. STOP the page refresh
+        //  STOP the page refresh
         e.preventDefault(); 
         
         console.log("Form Submit Detected!"); 
 
-        // 2. FADE OUT the form
+        // FADE OUT the form
         gsap.to(forgeForm, { 
             opacity: 0, 
             y: -20, 
             duration: 0.4, 
             onComplete: () => {
-                // 3. SWAP the display
+                // SWAP the display
                 forgeForm.style.display = 'none';
                 successMsg.style.display = 'block';
                 
-                // 4. FADE IN the success message
+                // FADE IN the success message
                 gsap.fromTo(successMsg, 
                     { opacity: 0, y: 20 }, 
                     { opacity: 1, y: 0, duration: 0.5 }
