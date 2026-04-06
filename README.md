@@ -21,7 +21,7 @@
 | **Google Chrome** | ✅ Optimized | Full support for 4K/8K grid & GSAP transitions. |
 | **Microsoft Edge** | ✅ Supported | Matches Chrome's rendering engine. |
 | **iPad / iOS** | 🛠️ Partial | ~2s delay with iPhone iOS and ~7s delay for canvas initialization, but scroll is fluid. |
-| **Apple Safari** | ⚠️ Not Recommended | Known issues with canvas rendering and video playback. |
+| **Apple Safari** | ⚠️ Not Recommended | Known issues with canvas rendering, scroll and video playback. |
 
 ``Technical Note: While the interactive canvas has an initial loading delay on iPad/iOS, the scroll behavior is fully optimized to match the desktop Chrome experience.``
 
