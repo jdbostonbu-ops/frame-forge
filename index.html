@@ -230,25 +230,33 @@
         <button onclick="closeContact()" class="back-btn">← BACK TO MENU</button>
     </div>
 
-    <!-- The Form -->
-    <form id="forge-form">
-        <div class="input-group">
-            <label>NAME</label>
-            <input type="text" placeholder="YOUR NAME" required>
-        </div>
-        
-        <div class="input-group">
-            <label>EMAIL</label>
-            <input type="email" placeholder="EMAIL@STUDIO.COM" required>
-        </div>
+    <!-- The Form using https://app.web3forms.com/ -->
+<form id="forge-form" action="https://api.web3forms.com/submit" method="POST">
+    <!-- 1. The required Web3Forms Access Key (Hidden) -->
+    <input type="hidden" name="access_key" value="46e5ebdc-e094-4a8f-8a1c-8db65f69a4bc">
 
-        <div class="input-group">
-            <label>YOUR VISION</label>
-            <textarea rows="4" placeholder="TELL US ABOUT THE PROJECT..."></textarea>
-        </div>
+    <!-- Name Input (Added name="name") -->
+    <div class="input-group">
+        <label>NAME</label>
+        <input type="text" name="name" placeholder="YOUR NAME" required>
+    </div>
+    
+    <!-- Email Input (Added name="email") -->
+    <div class="input-group">
+        <label>EMAIL</label>
+        <input type="email" name="email" placeholder="EMAIL@STUDIO.COM" required>
+    </div>
 
-        <button type="submit" class="submit-btn">DEVELOP PROJECT</button>
-    </form>
+    <!-- Textarea (Added name="message") -->
+    <div class="input-group">
+        <label>YOUR VISION</label>
+        <textarea name="message" rows="4" placeholder="TELL US ABOUT THE PROJECT..." required></textarea>
+    </div>
+
+    <!--  Submit Button -->
+    <button type="submit" class="submit-btn">DEVELOP PROJECT</button>
+</form>
+
 
     <!-- Success Message (Hidden by CSS) -->
     <div id="success-message" class="hidden-success">
@@ -286,19 +294,6 @@
     </div>
 </div> 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>
