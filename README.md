@@ -34,7 +34,7 @@
 - **Workflow**: Resolve-based color aesthetic applied to web UI
 
 ### 🎨 Design Philosophy
-- Frame Forge is built on the concept of "The Cinematic Canvas."
+- Frame Forge is built on the concept of "The Cinematic Canvas." The Frame Forge logo was created on canva.com.
 - Every transition is timed to mimic a film cut, and the "capabilities" section uses a brutalist, high-contrast aesthetic to mirror professional production call sheets.
 
 ### 📈 Activity & Contributions
