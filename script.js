@@ -62,9 +62,6 @@ window.addEventListener('load', () => {
         }
     }
 
-
-
-
     // THE SCANNER
 function init() {
     // Set Canvas size
@@ -104,13 +101,9 @@ function init() {
             }
         }
     }
-
-
     
     console.log("Forge active with " + particleArray.length + " particles.");
 
-
- 
         // Particle Glow
         particleArray.forEach(p => {
             gsap.to(p, { opacity: 0.3, duration: 1.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
@@ -142,8 +135,6 @@ menuTl.to(".toggle-line", { width: 60, backgroundColor: "#fff", duration: 0.3 },
           { x: 0, opacity: 1, stagger: 0.1, duration: 0.4, ease: "power2.out" }, 
           "-=0.3"
       );
-
-
 
 // Grab the elements
 
@@ -212,11 +203,6 @@ window.toggleMenu = function() {
     gsap.to(".menu-content", { opacity: 1, duration: 0.5 });
 };
 
-
-
-
-
-
 });
 
 
@@ -236,8 +222,6 @@ function openProject(projectId) {
         }
     }
 }
-
-
 
 console.log("GSAP and ScrollTrigger are ready!");
 
@@ -275,8 +259,6 @@ window.scrollToWork = function() {
         ease: "power4.inOut"
     });
 };
-
-
 
 // Function for SERVICES
 window.scrollToServices = function() {
