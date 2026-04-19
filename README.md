@@ -35,6 +35,10 @@ This project is optimized for high-performance Chromium engines. For the best ex
 - **Workflow**: Resolve-based color aesthetic applied to web UI
 
 ### 🎨 Design Philosophy
+- **The "Forge" Concept:** The text "breaks apart" when the mouse gets near `(this.x -= dx / 10)` and then "re-forges" itself `(this.x += (this.homeX - this.x) * this.ease)` is aimed at branding.
+- **Performance Minded:** Setting `willReadFrequently: true on the 2D context` is aimed at high-performance canvas scanning.
+- **Technical Sophistication:** I am manipulating its geometry. Using data.data to find alpha `values > 0` and placing particles there.
+- **Staggered Menu:** In my menuTl, I use stagger: 0.1. This "one-by-one" appearance of links makes the site feel "premium" and intentional.
 - Frame Forge is built on the concept of **"The Cinematic Canvas."** The Frame Forge logo was created on [Canva](https://canva.com).
 - Every transition is timed to mimic a film cut, and the "capabilities" section uses a brutalist, high-contrast aesthetic to mirror professional production call sheets.
 
