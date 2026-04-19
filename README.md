@@ -43,7 +43,7 @@ This project is optimized for high-performance Chromium engines. For the best ex
 - **Current Focus**: Optimizing WebGL/Canvas performance for mobile devices.
 - **Daily Activity**: Check out my Contribution Graph for a real-time view of my development streak.
 
-
+⭐ Love this project? Give it a star to show your support and help others with canvas creations!
 
 
 
