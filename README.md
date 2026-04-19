@@ -1,10 +1,9 @@
 ### Frame Forge | Cinematic Studio 🎬
 ``A high-performance, visually-driven portfolio designed for film production and digital cinematography.``
-- [Live Demo](https://jdbostonbu-ops.github.io/frame-forge/) | [GitHub Profile](https://github.com/jdbostonbu-ops)
 
 ## 👤 Author
 **Jacqueline**  
-[Check out my GitHub Profile](https://github.com/jdbostonbu-ops)
+- [Live Demo](https://jdbostonbu-ops.github.io/frame-forge/) | [GitHub Profile](https://github.com/jdbostonbu-ops)
 
 ### 🎥 Key Technical Features
 - **Compatibility**: Mobile iOS/Tablet/iPad compatible.
