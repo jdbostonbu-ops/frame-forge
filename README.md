@@ -5,6 +5,10 @@
 **Jacqueline**  
 - [Live Demo](https://jdbostonbu-ops.github.io/frame-forge/) | [GitHub Profile](https://github.com/jdbostonbu-ops)
 
+<div align="center">
+  <img src="FrameForge.gif" width="100%" alt="Frame Forge Cinematic Demo">
+</div>
+
 ### 🎥 Key Technical Features
 - **Compatibility**: Mobile iOS/Tablet/iPad compatible.
 - **Cinematic Video Grid**: A custom-built "stack" of auto-playing 4K/8K video previews with optimized `playsinline` and `muted` attributes for mobile performance.
