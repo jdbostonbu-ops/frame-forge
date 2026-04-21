@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=1.1">
@@ -195,6 +196,11 @@
     </div>
 </section>
   <!-- Centered: The Logo -->
+    
+   
+        
+      
+
 
 <!-- THE OVERLAYS (Hidden by default) -->
 <div id="studio-menu" class="menu-overlay">
@@ -220,33 +226,26 @@
         <button onclick="closeContact()" class="back-btn">← BACK TO MENU</button>
     </div>
 
-    <!-- The Form using https://app.web3forms.com/ -->
-<form id="forge-form" action="https://api.web3forms.com/submit" method="POST">
-    <!-- The required Web3Forms Access Key (Hidden) -->
-    <input type="hidden" name="access_key" value="46e5ebdc-e094-4a8f-8a1c-8db65f69a4bc">
+    <!-- The Form -->
+    <form action="https://api.web3forms.com/submit" method="POST" id="forge-form">
+        <div class="input-group">
+            <input type="hidden" name="access_key" value="46e5ebdc-e094-4a8f-8a1c-8db65f69a4bc">
+            <label>NAME</label>
+            <input type="text" placeholder="YOUR NAME" required>
+        </div>
+        
+        <div class="input-group">
+            <label>EMAIL</label>
+            <input type="email" placeholder="EMAIL@STUDIO.COM" required>
+        </div>
 
-    <!-- Name Input (Added name="name") -->
-    <div class="input-group">
-        <label>NAME</label>
-        <input type="text" name="name" placeholder="YOUR NAME" required>
-    </div>
-    
-    <!-- Email Input (Added name="email") -->
-    <div class="input-group">
-        <label>EMAIL</label>
-        <input type="email" name="email" placeholder="EMAIL@STUDIO.COM" required>
-    </div>
+        <div class="input-group">
+            <label>YOUR VISION</label>
+            <textarea name="message" rows="4" placeholder="TELL US ABOUT THE PROJECT..."></textarea>
+        </div>
 
-    <!-- Textarea (Added name="message") -->
-    <div class="input-group">
-        <label>YOUR VISION</label>
-        <textarea name="message" rows="4" placeholder="TELL US ABOUT THE PROJECT..." required></textarea>
-    </div>
-
-    <!--  Submit Button -->
-    <button type="submit" class="submit-btn">DEVELOP PROJECT</button>
-</form>
-
+        <button type="submit" class="submit-btn">DEVELOP PROJECT</button>
+    </form>
 
     <!-- Success Message (Hidden by CSS) -->
     <div id="success-message" class="hidden-success">
@@ -264,6 +263,7 @@
         <a href="https://x.com" target="_blank">X</a>
         <a href="https://linkedin.com" target="_blank">LINKEDIN</a>
     </div>
+
 
 <div class="footer-left">
     <a href="https://instagram.com" target="_blank" class="social-link">
@@ -283,6 +283,19 @@
     </div>
 </div> 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
