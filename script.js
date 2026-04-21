@@ -62,6 +62,9 @@ window.addEventListener('load', () => {
         }
     }
 
+
+
+
     // THE SCANNER
 function init() {
     // Set Canvas size
@@ -104,6 +107,8 @@ function init() {
     
     console.log("Forge active with " + particleArray.length + " particles.");
 
+
+ 
         // Particle Glow
         particleArray.forEach(p => {
             gsap.to(p, { opacity: 0.3, duration: 1.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
@@ -136,35 +141,47 @@ menuTl.to(".toggle-line", { width: 60, backgroundColor: "#fff", duration: 0.3 },
           "-=0.3"
       );
 
-// Grab the elements
+// Inside your window.addEventListener('load', () => { ... })
 
 const forgeForm = document.getElementById('forge-form');
 const successMsg = document.getElementById('success-message');
 
 if (forgeForm) {
     forgeForm.addEventListener('submit', function(e) {
-        //  STOP the page refresh
-        e.preventDefault(); 
-        
-        console.log("Form Submit Detected!"); 
+        e.preventDefault();
+        console.log("Form Submit Detected!");
 
-        // FADE OUT the form
-        gsap.to(forgeForm, { 
-            opacity: 0, 
-            y: -20, 
-            duration: 0.4, 
-            onComplete: () => {
-                // SWAP the display
-                forgeForm.style.display = 'none';
-                successMsg.style.display = 'block';
-                
-                // FADE IN the success message
-                gsap.fromTo(successMsg, 
-                    { opacity: 0, y: 20 }, 
-                    { opacity: 1, y: 0, duration: 0.5 }
-                );
+        const formData = new FormData(forgeForm);
+
+        // 2. SEND the data to Web3Forms
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+
+                // 2. FADE OUT the form
+                gsap.to(forgeForm, { 
+                    opacity: 0, 
+                    y: -20, 
+                    duration: 0.4, 
+                    onComplete: () => {
+
+                        // 3. SWAP the display
+                        forgeForm.style.display = 'none';
+                        successMsg.style.display = 'block';
+                        
+                        // 4. FADE IN the success message
+                        gsap.fromTo(successMsg, 
+                            { opacity: 0, y: 20 }, 
+                            { opacity: 1, y: 0, duration: 0.5 }
+                        );
+                    }
+                });
             }
-        });
+        })
+        .catch(error => console.log("Error sending form:", error));
     });
 }
 
@@ -203,6 +220,7 @@ window.toggleMenu = function() {
     gsap.to(".menu-content", { opacity: 1, duration: 0.5 });
 };
 
+
 });
 
 
@@ -222,6 +240,8 @@ function openProject(projectId) {
         }
     }
 }
+
+
 
 console.log("GSAP and ScrollTrigger are ready!");
 
@@ -260,6 +280,8 @@ window.scrollToWork = function() {
     });
 };
 
+
+
 // Function for SERVICES
 window.scrollToServices = function() {
     window.toggleMenu(); 
@@ -280,6 +302,15 @@ window.scrollToAbout = function() {
         ease: "power4.inOut"
     });
 };
+
+
+
+
+
+
+
+
+
 
 
 
