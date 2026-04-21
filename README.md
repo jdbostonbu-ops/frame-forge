@@ -32,7 +32,8 @@ This project is optimized for high-performance Chromium engines. For the best ex
 - **Animations**: GSAP (GreenSock), HTML5 Canvas API
 - **Frontend**: Vanilla JavaScript (ES6+), Semantic HTML5
 - **Styling**: CSS3 (Custom Grid Layouts, Video Overlays, and Blur Textures)
-- **Workflow**: Resolve-based color aesthetic applied to web UI
+- **Work**: Resolve-based color aesthetic applied to web UI
+- **Form Submission:** [Free form submission](https://web3forms.com/) Web3Forms for serverless form handling, integrated with custom AJAX/Fetch logic and GSAP success states.
 
 ### 🎨 Design Philosophy
 - **The "Forge" Concept:** The text "breaks apart" when the mouse gets near `(this.x -= dx / 10)` and then "re-forges" itself `(this.x += (this.homeX - this.x) * this.ease)` is aimed at branding.
