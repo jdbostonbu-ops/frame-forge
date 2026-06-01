@@ -583,6 +583,7 @@ body {
 .work-overlay {
     position: absolute;
     inset: 0; /* Shortcut for top/bottom/left/right: 0 */
+    z-index: 3;
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* Puts text at the bottom */
@@ -591,6 +592,7 @@ body {
     opacity: 0; /* Hidden by default */
     transition: opacity 0.3s ease;
     bottom: 5%;
+    pointer-events: none;
 }
 
 /* HOVER EFFECTS */
@@ -903,7 +905,6 @@ canvas {
         padding: 0 5%; /* Drops from 20% to 5% so the videos stay BIG */
     }
 }
-
 
 
 
