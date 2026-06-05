@@ -78,7 +78,7 @@ body::after {
   height: 100%; /*prevents glitchy on mobile when resizing */
   z-index: 10; /* Sits on top of the video */
   visibility: hidden; /* Hidden until the video is ready to avoid weird flashes on load */
-  background: transparent;
+  background: transparent !important;
 
   /* The Experience-Triple Threat */
   cursor: crosshair; /* Cool "Studio" look on Laptop; cursor vibe (The Look)*/
@@ -140,7 +140,6 @@ body::after {
 
 
 
-
 .studio-nav {
     position: fixed;
     top: 0;
@@ -189,7 +188,7 @@ body::after {
 /* THE CLICKABLE BUTTONS */
 .submit-btn {
     cursor: pointer;
-    pointer-events: auto;
+    pointer-events: auto !important;
 }
 
 
@@ -223,7 +222,7 @@ body::after {
     /* --- The Layout --- */
     display: block;                  /* Stacks links on top of each other */
     margin: 25px 0;                 /* Vertical breathing room */
-    opacity: 1;              /* Ensures they are fully visible when the menu opens */
+    opacity: 1 !important;              /* Ensures they are fully visible when the menu opens */
 
     /* --- The Interaction --- */
     transition: color 0.3s ease;     /* Smoothly fades to orange on hover */
@@ -231,11 +230,11 @@ body::after {
     z-index: 10;        /* <--- Pulls it above the menu background */
 
     display: block;
-    visibility: visible;
+    visibility: visible !important;
 }
 
 .menu-content a:hover {
-    color: #FF4D00; 
+    color: #FF4D00 !important; 
 }
 
 
@@ -275,7 +274,7 @@ body::after {
 .side-panel label, 
 .side-panel p,
 .side-panel .back-btn {
-    color: #FF4D00; /* Force all text to White */
+    color: #FF4D00 !important; /* Force all text to White */
 }
 
 
@@ -302,12 +301,12 @@ body::after {
 }
 
 /* Ensure the labels are ORANGE and the input text is WHITE */
-#forge-form label { color: #FF4D00; font-weight: 900; font-size: 12px; }
+#forge-form label { color: #FF4D00 !important; font-weight: 900; font-size: 12px; }
 #forge-form input, #forge-form textarea { 
     background: transparent; 
     border: none; 
     border-bottom: 1px solid #333; 
-    color: #fff; 
+    color: #fff !important; 
     padding: 10px 0;
 }
 
@@ -331,7 +330,7 @@ body::after {
     position: relative;
     z-index: 5001; /* Pulls the button even further forward */
    
-    pointer-events: auto;
+    pointer-events: auto !important;
 }
 
 
@@ -364,9 +363,9 @@ body::after {
 
 .back-btn {
     position: relative; 
-    z-index: 9999; /* Forces it to the very front */
-    cursor: pointer; /* If the cursor doesn't turn into a hand, it's being blocked */
-    pointer-events: auto;
+    z-index: 9999 !important; /* Forces it to the very front */
+    cursor: pointer !important; /* If the cursor doesn't turn into a hand, it's being blocked */
+    pointer-events: auto !important;
 }
 
 .panel-header {
@@ -377,7 +376,7 @@ body::after {
 
 
 .side-panel .back-btn:hover {
-    color: #FF4D00; /* Back button turns Orange on hover */
+    color: #FF4D00 !important; /* Back button turns Orange on hover */
 }
 
 .hidden-success {
@@ -386,11 +385,11 @@ body::after {
 
 /* THE FORM (Make sure it starts VISIBLE) */
 #forge-form {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 20px; 
-    opacity: 1;
-    visibility: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 
@@ -398,7 +397,7 @@ body::after {
 #success-message h3, 
 #success-message p,
 #contact-panel h2 {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 
@@ -466,27 +465,27 @@ body::after {
 }
 
 .social-icon {
-    width: 24px;
-    height: 24px;
+    width: 24px !important;
+    height: 24px !important;
    
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 
 
 #x-icon {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1); /* Forces ONLY X to be white */
-    opacity: 1;
+    width: 24px !important;
+    height: 24px !important;
+    filter: brightness(0) invert(1) !important; /* Forces ONLY X to be white */
+    opacity: 1 !important;
     
 }
 
 /* 2. THE FIX: The Hover State for X (Turns Orange) */
 .social-link:hover #x-icon {
     /* This specific filter creates that perfect Forge Orange (#FF4D00) */
-    filter: invert(35%) sepia(90%) saturate(5000%) hue-rotate(10deg);
-    opacity: 1;
+    filter: invert(35%) sepia(90%) saturate(5000%) hue-rotate(10deg) !important;
+    opacity: 1 !important;
 }
 
 
@@ -494,7 +493,7 @@ body::after {
 .social-link:hover .social-icon {
     opacity: 1;
     /* This specific filter creates Forge Orange (#FF4D00) */
-    filter: invert(35%) sepia(90%) saturate(5000%) hue-rotate(10deg);
+    filter: invert(35%) sepia(90%) saturate(5000%) hue-rotate(10deg) !important;
     transform: translateY(-3px);
     object-fit: contain;
     transition: all 0.3s ease;
@@ -511,20 +510,20 @@ html, body {
     padding: 0;
     background: #000;
 
-    overflow-y: visible; /* Forces Chrome to see the scrollbar */  
+    overflow-y: visible !important; /* Forces Chrome to see the scrollbar */  
 }
 
 /* Ensure the body is long enough to hold all these 'pages' */
 body {
-    height: auto;
+    height: auto !important;
     min-height: 100%; /* Adjust this to fit Forge + 4 Videos + Services */
 }
 
 
 /* The Video Wrapper */
 .work-img-wrapper {
-    width: 100%; 
-    height: 100%;
+    width: 100% !important; 
+    height: 100% !important;
     
     border-radius: 4px; /* Optional: adds a subtle "pro" look */
 }
@@ -559,12 +558,12 @@ body {
 /* The Video (The Content) */
 .work-video {
     /* Force it to fill the 100vh box no matter what */
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
   
     /* This replaces aspect-ratio. It crops the video 
        to fill the screen without stretching the people inside. */
-    object-fit: cover; 
+    object-fit: cover !important; 
     
     /* Positioning & Display */
     display: block;      
@@ -583,7 +582,6 @@ body {
 .work-overlay {
     position: absolute;
     inset: 0; /* Shortcut for top/bottom/left/right: 0 */
-    z-index: 3;
     display: flex;
     flex-direction: column;
     justify-content: flex-end; /* Puts text at the bottom */
@@ -592,7 +590,6 @@ body {
     opacity: 0; /* Hidden by default */
     transition: opacity 0.3s ease;
     bottom: 5%;
-    pointer-events: none;
 }
 
 /* HOVER EFFECTS */
@@ -631,9 +628,9 @@ canvas {
 
 .work-video, video {
     /* REMOVE the 1280px fixed sizes! Use 100% instead */
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
     display: block;
     position: absolute;
     top: 0;
@@ -832,14 +829,14 @@ canvas {
     z-index: 2000;
     
     /* Forces the panel to allow internal scrolling */
-    overflow-y: auto; 
+    overflow-y: auto !important; 
     display: block;
 }
 
 .panel-content {
     padding: 80px 10%;
     /* MASSIVE CUSHION: Pushes the Transmit button way up from the bottom */
-    padding-bottom: 100px; 
+    padding-bottom: 100px !important; 
     min-height: 100%;
     box-sizing: border-box;
     background: #000;
@@ -905,6 +902,23 @@ canvas {
         padding: 0 5%; /* Drops from 20% to 5% so the videos stay BIG */
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

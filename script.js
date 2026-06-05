@@ -225,21 +225,6 @@ window.toggleMenu = function() {
 
 
 function openProject(projectId) {
-    const iframe = event.currentTarget.querySelector('iframe');
-    const cover = event.currentTarget.querySelector('.youtube-cover');
-    const overlay = event.currentTarget.querySelector('.work-overlay');
-
-    if (iframe) {
-        iframe.src = "https://www.youtube.com/embed/JOhiWY7XmoY?autoplay=1&mute=0&controls=1&rel=0";
-        if (cover) {
-            cover.style.display = "none";
-        }
-        if (overlay) {
-            overlay.style.display = "none";
-        }
-        return;
-    }
-
     // Target the video inside the clicked project item
     const video = event.currentTarget.querySelector('video');
 
@@ -317,6 +302,25 @@ window.scrollToAbout = function() {
         ease: "power4.inOut"
     });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
