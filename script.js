@@ -224,18 +224,25 @@ window.toggleMenu = function() {
 });
 
 
-function openProject(projectId) {
-    // Target the video inside the clicked project item
-    const video = event.currentTarget.querySelector('video');
+function openProject(projectId, clickEvent) {
+    const item = clickEvent.currentTarget;
+    const iframe = item.querySelector('iframe');
+    const video = item.querySelector('video');
+
+    if (iframe) {
+        item.classList.add('is-playing');
+        return;
+    }
 
     if (video) {
         if (video.paused) {
 
             // First unmute, then play (required by some browsers for sound)
+            item.classList.add('is-playing');
             video.muted = false; 
             video.play().catch(error => console.log("Playback failed:", error));
         } else {
-            
+            item.classList.remove('is-playing');
             video.pause();
         }
     }
@@ -302,7 +309,6 @@ window.scrollToAbout = function() {
         ease: "power4.inOut"
     });
 };
-
 
 
 
